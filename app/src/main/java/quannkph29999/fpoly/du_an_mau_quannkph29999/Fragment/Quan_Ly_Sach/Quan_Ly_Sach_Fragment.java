@@ -133,6 +133,7 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
                         if (sachDAO.ThemSach(themsach) > 0) {
                             Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                             realoaddatasach();
+                            alertDialog.dismiss();
                         } else {
                             Toast.makeText(getContext(), "Thêm Thất Bại", Toast.LENGTH_SHORT).show();
                         }

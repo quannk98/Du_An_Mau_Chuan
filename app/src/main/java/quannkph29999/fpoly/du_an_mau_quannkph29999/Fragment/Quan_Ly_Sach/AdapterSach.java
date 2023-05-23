@@ -164,7 +164,7 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
                     suagiasach.setError("Không bỏ trống giá sách");
                 } else {
                     HashMap<String, Object> loaisachspinner = (HashMap<String, Object>) sualoaisach.getSelectedItem();
-                    String tenls = (String) loaisachspinner.get("MaLS");
+                    String tenls = (String) loaisachspinner.get("TenLS");
                     Sach sach1 = new Sach(masach,suaten,suagia,tenls);
                     if(sachDAO.SuaSach(sach1) > 0){
                         Toast.makeText(context, "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
@@ -172,6 +172,7 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
                           sachDAO = new SachDAO(context);
                           listsach = sachDAO.GetDSS();
                           notifyDataSetChanged();
+                          alertDialog.dismiss();
                     }
                     else {
                         Toast.makeText(context, "Cập Nhật Thất Bại", Toast.LENGTH_SHORT).show();

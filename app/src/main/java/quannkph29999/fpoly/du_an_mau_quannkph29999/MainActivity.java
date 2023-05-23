@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       replaceFragment(new Quan_Ly_Phieu_Muon_Fragment());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerlayout);
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         DBHelper db = new DBHelper(getApplicationContext());
         db.getWritableDatabase();
+
 
     }
 
@@ -109,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
                 alertDialog.show();
 
-                // haihuy
                 break;
 
 

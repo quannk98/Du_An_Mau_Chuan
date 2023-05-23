@@ -110,6 +110,7 @@ public class Quan_Ly_Thanh_Vien_Fragment extends Fragment {
                     if (thanhVienDAO.ThemTV(themthanhvien) > 0) {
                         Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                         realoandata();
+                        alertDialog.dismiss();
 
                     } else {
                         Toast.makeText(getContext(), "Thêm Thất Bại", Toast.LENGTH_SHORT).show();

@@ -87,6 +87,7 @@ public class AdapterThanhVien extends RecyclerView.Adapter<AdapterThanhVien.View
                     thanhVienDAO = new ThanhVienDAO(context);
                     listtv = thanhVienDAO.GetDSTV();
                     notifyDataSetChanged();
+
                 }
             }
         });
@@ -144,6 +145,7 @@ public class AdapterThanhVien extends RecyclerView.Adapter<AdapterThanhVien.View
                         thanhVienDAO = new ThanhVienDAO(context);
                         listtv = thanhVienDAO.GetDSTV();
                         notifyDataSetChanged();
+                        alertDialog.dismiss();
                     } else {
                         Toast.makeText(context, "Cập Nhật Thất Bại", Toast.LENGTH_SHORT).show();
                     }

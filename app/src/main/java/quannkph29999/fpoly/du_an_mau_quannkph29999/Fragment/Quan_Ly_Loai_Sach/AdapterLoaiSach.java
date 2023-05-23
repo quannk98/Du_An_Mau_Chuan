@@ -142,6 +142,7 @@ public class AdapterLoaiSach extends RecyclerView.Adapter<AdapterLoaiSach.ViewHo
                        loaiSachDAO = new LoaiSachDAO(context);
                        listls = loaiSachDAO.GetDSLS();
                        notifyDataSetChanged();
+                       alertDialog.dismiss();
                    }
                    else {
                        Toast.makeText(context, "Cập Nhật Thất Bại", Toast.LENGTH_SHORT).show();

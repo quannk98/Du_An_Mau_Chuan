@@ -173,19 +173,35 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
         SimpleAdapter adaptersuaten = new SimpleAdapter(context, listspinnertv, android.R.layout.simple_list_item_1,
                 new String[]{"TenTV"}, new int[]{android.R.id.text1});
         suatentv.setAdapter(adaptersuaten);
+        int indextv = 0;
+        int vitritv = -1;
+        for (HashMap<String, Object> item : listspinnertv) {
+            if ( item.get("TenTV") == phieuMuon.getTentv()) {
+                vitritv = indextv;
+            }
+            indextv++;
+        }
         SimpleAdapter adaptersuasach = new SimpleAdapter(context, listspinnertensach, android.R.layout.simple_list_item_1,
                 new String[]{"TenS"}, new int[]{android.R.id.text1});
         suatensach.setAdapter(adaptersuasach);
-
+        int indexs = 0;
+        int vitris = -1;
+        for (HashMap<String, Object> item : listspinnertensach) {
+            if ( item.get("TenS") == phieuMuon.getTens()) {
+                vitris = indexs;
+            }
+            indexs++;
+        }
 
         suagiathue.setText(String.valueOf(phieuMuon.getGiathue()));
         suangaythue.setText(phieuMuon.getNgaythue());
-
+        suatentv.setSelection(vitritv);
+        suatensach.setSelection(vitris);
         suaphieumuon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String suangaythuesach = suangaythue.getText().toString();
-
+                int giathue = Integer.parseInt(suagiathue.getText().toString());
                 if (suangaythue.length() == 0) {
                     suangaythue.requestFocus();
                     suangaythue.setError("Không bỏ trống ngày thuê");
@@ -201,13 +217,14 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
                     } else if (suatrangthai.isChecked() == false) {
                         trangthaisua = "Chưa Trả Sách";
                     }
-                    PhieuMuon suaphieumuon = new PhieuMuon(maphieumuon, suangaythuesach, trangthaisua, tentv, tensach, 2000);
+                    PhieuMuon suaphieumuon = new PhieuMuon(maphieumuon, suangaythuesach, trangthaisua, tentv, tensach,giathue );
                     if (phieuMuonDAO.Suapm(suaphieumuon) > 0) {
                         Toast.makeText(context, "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
                         listpm.clear();
                         phieuMuonDAO = new PhieuMuonDAO(context);
                         listpm = phieuMuonDAO.GetDSPM();
                         notifyDataSetChanged();
+                        alertDialog.dismiss();
                     } else {
                         Toast.makeText(context, "Cập Nhật Thất Bại", Toast.LENGTH_SHORT).show();
                     }

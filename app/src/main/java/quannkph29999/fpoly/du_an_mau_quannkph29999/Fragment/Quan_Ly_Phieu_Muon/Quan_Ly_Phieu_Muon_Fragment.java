@@ -183,6 +183,7 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
                     if(phieuMuonDAO.Thempm(themphieumuon) > 0){
                         Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                         realoandata();
+                        alertDialog.dismiss();
                     }
                     else {
                         Toast.makeText(getContext(), "Thêm Thất Bại", Toast.LENGTH_SHORT).show();

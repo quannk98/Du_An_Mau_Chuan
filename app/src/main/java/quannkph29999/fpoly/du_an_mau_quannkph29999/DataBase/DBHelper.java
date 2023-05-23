@@ -15,20 +15,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-           String bangthanhvien = "CREATE TABLE thanhvien(MaTV integer primary key autoincrement ,TenTV text NOT NULL,CCCD integer UNIQUE NOT NULL)";
+           String bangthanhvien = "CREATE TABLE thanhvien(MaTV integer primary key autoincrement ,TenTV text ,CCCD integer UNIQUE )";
          db.execSQL(bangthanhvien);
-           String bangloaisach = "CREATE TABLE loaisach(MaLS integer primary key autoincrement,TenLS text UNIQUE NOT NULL)";
+           String bangloaisach = "CREATE TABLE loaisach(MaLS integer primary key autoincrement,TenLS text UNIQUE )";
          db.execSQL(bangloaisach);
-           String bangsach = "CREATE TABLE sach(MaS integer primary key autoincrement,TenS text  NOT NULL,GiathueS integer NOT NULL," +
-                 "TenLS text NOT NULL REFERENCES loaisach(TenLS))";
+           String bangsach = "CREATE TABLE sach(MaS integer primary key autoincrement,TenS text  ,GiathueS integer ," +
+                 "TenLS text  REFERENCES loaisach(TenLS))";
          db.execSQL(bangsach);
            String bangphieumuon = "CREATE TABLE phieumuon(MaPM integer primary key autoincrement,ngaythue text ,trangthai text ," +
                    "TenTV text  REFERENCES thanhvien(TenTV)," +
                  "TenS text  REFERENCES sach(TenS)," +
                  "GiathueS integer  REFERENCES sach(GiathueS)  )";
          db.execSQL(bangphieumuon);
-           String bangthuthu = "CREATE TABLE thuthu(MaTT integer primary key autoincrement,TenTT text NOT NULL )";
+           String bangthuthu = "CREATE TABLE thuthu(MaTT text primary key ,TenTT text ,matkhau text )";
          db.execSQL(bangthuthu);
+         String them = "INSERT INTO thuthu VALUES('admin','Ngoc Trinh','1234')";
+         db.execSQL(them);
     }
 
     @Override
