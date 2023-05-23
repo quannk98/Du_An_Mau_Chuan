@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login2"
+    tools:context=".ScreenLogin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ĐĂNG NHẬP"
+        android:gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="180dp"
+        android:textColor="@android:color/holo_red_light"
+        />
+    <EditText
+        android:id="@+id/slogin_tendangnhap"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custome_listview"
+        android:hint="Gmail hoặc số điện thoại"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+
+        />
+    <EditText
+        android:id="@+id/slogin_mkdangnhap"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint=" Mật khẩu"
+        android:background="@drawable/custome_listview"
+        android:inputType="textPassword"
+        />
+    <CheckBox
+        android:id="@+id/slogin_luudp"
+        android:layout_marginTop="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:layout_marginTop="-25dp"
+        android:layout_marginLeft="40dp"
+        android:text="Lưu Đăng Nhập"
+        android:textColor="@android:color/holo_red_light"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/slogin_btndangnhap"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:text="Đăng Nhập"
+
+        />
+    <Button
+        android:id="@+id/slogin_btnthoat"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="-60dp"
+        android:layout_marginLeft="220dp"
+        android:text="thoát"
+
+        />
+
+</LinearLayout>

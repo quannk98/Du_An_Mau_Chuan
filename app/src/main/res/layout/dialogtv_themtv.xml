@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_gravity="center_horizontal"
+        android:text="Thêm Thành VIên"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="Tên Thành Viên"
+        />
+    <EditText
+        android:id="@+id/dialogtv_themtentv"
+        android:layout_width="350dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custome_listview"
+        android:layout_gravity="center"
+        android:layout_height="40dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="CCCD"
+        />
+    <EditText
+        android:id="@+id/dialogtv_themcccdtv"
+        android:layout_width="350dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:background="@drawable/custome_listview"
+        android:layout_gravity="center"
+        android:layout_height="40dp"
+        />
+
+
+    <Button
+        android:id="@+id/dialogtv_btnthemtv"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="Thêm" />
+
+    <Button
+        android:id="@+id/dialogtv_btnthoatthemtv"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="230dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="THoát" />
+</LinearLayout>

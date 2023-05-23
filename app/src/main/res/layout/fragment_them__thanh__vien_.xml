@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.Them_Thanh_Vien.Them_Thanh_Vien_Fragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/images" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Tên Đăng Nhập:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/themtv_tendangnhapdk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Họ Và Tên:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/themtv_hotendk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="CCCD:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/themtv_cccddk"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Mật Khẩu:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/themtv_matkhaudk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/showmkdk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/showpassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Nhập Lại Mật Khẩu:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/themtv_nhaplaimkdk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/shownhaplaimkdk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/showpassword" />
+
+    <Button
+        android:id="@+id/themtv_btndangky"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="Đăng ký" />
+
+    <Button
+        android:id="@+id/themtv_btnshowds"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="230dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Xem DS" />
+
+
+</LinearLayout>

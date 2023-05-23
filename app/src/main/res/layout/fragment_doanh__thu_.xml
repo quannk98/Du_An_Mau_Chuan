@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".Fragment.Doanh_Thu.Doanh_Thu_Fragment">
+
+
+    <Button
+        android:id="@+id/dt_btntungay"
+        android:text="TỪ NGÀY"
+        android:layout_marginLeft="10dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"/>
+    <EditText
+        android:id="@+id/dt_tungay"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="130dp"
+        android:layout_height="50dp"/>
+    <Button
+        android:id="@+id/dt_btndenngay"
+        android:layout_below="@+id/dt_btntungay"
+        android:text="ĐẾN NGÀY"
+        android:layout_marginLeft="10dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"/>
+    <EditText
+        android:id="@+id/dt_denngay"
+        android:layout_below="@+id/dt_tungay"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="130dp"
+        android:layout_height="50dp"/>
+    <Button
+        android:id="@+id/dt_btndoanhthu"
+        android:layout_below="@+id/dt_btndenngay"
+        android:text="Tổng doanh thu"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"/>
+    <EditText
+        android:id="@+id/dt_doanhthu"
+        android:layout_below="@+id/dt_btndoanhthu"
+        android:hint="Tổng Doanh Thu "
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.Doi_Mat_Khau.Doi_Mat_Khau_Fragment">
+
+    <ImageView
+        android:layout_marginTop="-115dp"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:src="@drawable/changepassword" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-70dp"
+        android:text="Mật Khẩu Cũ:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/dmk_matkhaucu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/dmk_showmkcu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/showpassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Mật Khẩu Mới:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/dmk_mkmoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/dmk_showmkmoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/showpassword" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Nhập Lại Mật Khẩu Mới:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/dmk_nlmkmoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/dmk_shownlmkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/showpassword" />
+    <Button
+        android:id="@+id/dmk_btnluu"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="Lưu" />
+
+    <Button
+        android:id="@+id/dmk_btnhuy"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="230dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Hủy" />
+
+</LinearLayout>
