@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,7 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        EditText masach, tensach, giathue, loaisach;
+        TextView masach, tensach, giathue, loaisach;
         ImageButton suasach, xoasach;
         LinearLayout llsach;
 

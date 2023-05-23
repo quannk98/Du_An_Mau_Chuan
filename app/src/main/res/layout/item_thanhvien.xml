@@ -15,16 +15,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="Mã Thành Viên:"
             android:textColor="@android:color/holo_red_light"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/itemtv_matv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -40,10 +41,12 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/itemtv_tentv"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -58,10 +61,11 @@
             android:text="CCCD:"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/itemtv_cccdtv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_height="30dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -70,7 +74,7 @@
         android:layout_width="40dp"
         android:layout_height="70dp"
         android:layout_marginLeft="310dp"
-        android:layout_marginTop="-100dp"
+        android:layout_marginTop="-85dp"
         android:src="@drawable/baseline_edit_24" />
 
     <ImageButton

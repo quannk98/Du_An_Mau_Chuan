@@ -92,11 +92,12 @@ public class Quan_Ly_Loai_Sach_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String themten = themtenls.getText().toString();
+                LoaiSach loaiSachthem = new LoaiSach(themten);
                 if (themtenls.length() == 0) {
                     themtenls.requestFocus();
                     themtenls.setError("Không được để trống tên loại sách");
                 } else {
-                    LoaiSach loaiSachthem = new LoaiSach(themten);
+
                     if (loaiSachDAO.ThemLS(loaiSachthem) > 0) {
                         Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                         realoandata();

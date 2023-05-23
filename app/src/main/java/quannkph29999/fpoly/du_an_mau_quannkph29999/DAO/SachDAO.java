@@ -39,7 +39,7 @@ public class SachDAO {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("TenS",sach.getTensach());
-        contentValues.put("Giathue",sach.getGiasach());
+        contentValues.put("GiathueS",sach.getGiasach());
         contentValues.put("TenLS",sach.getTenls());
 
         return sqLiteDatabase.insert("sach",null,contentValues);
@@ -48,7 +48,7 @@ public class SachDAO {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("TenS",sach.getTensach());
-        contentValues.put("Giathue",sach.getGiasach());
+        contentValues.put("GiathueS",sach.getGiasach());
         contentValues.put("TenLS",sach.getTenls());
         return  sqLiteDatabase.update("sach",contentValues,"MaS = ?",new String[]{String.valueOf(sach.getMasach())});
     }

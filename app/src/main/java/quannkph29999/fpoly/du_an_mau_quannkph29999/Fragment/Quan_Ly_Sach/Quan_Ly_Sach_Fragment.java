@@ -111,31 +111,37 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
         themloaisach.setAdapter(adapter);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-        btnthemsach.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String themten = themtensach.getText().toString();
-                int themgia = Integer.parseInt(themgiasach.getText().toString());
-                if (themtensach.length() == 0) {
-                    themtensach.requestFocus();
-                    themtensach.setError("Không bỏ trống tên sách");
-                } else if (themgiasach.length() == 0) {
-                    themgiasach.requestFocus();
-                    themgiasach.setError("Không bỏ trống giá sách");
-                } else {
-                    HashMap<String, Object> loaisachspinner = (HashMap<String, Object>) themloaisach.getSelectedItem();
-                    String tenls = (String) loaisachspinner.get("TenLS");
-                    Sach themsach = new Sach(themten, themgia, tenls);
-                    if (sachDAO.ThemSach(themsach) > 0) {
-                        Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
-                        realoaddatasach();
+        if(adapter.isEmpty()){
+            Toast.makeText(getContext(), "Thêm Loại Sách Để Thêm Tên Sách", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            btnthemsach.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String themten = themtensach.getText().toString();
+                    int themgia = Integer.parseInt(themgiasach.getText().toString());
+                    if (themtensach.length() == 0) {
+                        themtensach.requestFocus();
+                        themtensach.setError("Không bỏ trống tên sách");
+                    } else if (themgiasach.length() == 0) {
+                        themgiasach.requestFocus();
+                        themgiasach.setError("Không bỏ trống giá sách");
                     } else {
-                        Toast.makeText(getContext(), "Thêm Thất Bại", Toast.LENGTH_SHORT).show();
+                        HashMap<String, Object> loaisachspinner = (HashMap<String, Object>) themloaisach.getSelectedItem();
+                        String tenls = (String) loaisachspinner.get("TenLS");
+                        Sach themsach = new Sach(themten, themgia, tenls);
+                        if (sachDAO.ThemSach(themsach) > 0) {
+                            Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
+                            realoaddatasach();
+                        } else {
+                            Toast.makeText(getContext(), "Thêm Thất Bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
 
-            }
-        });
+                }
+            });
+        }
+
 
         btnthemthoatsach.setOnClickListener(new View.OnClickListener() {
             @Override

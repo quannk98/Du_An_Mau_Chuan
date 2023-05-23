@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,7 +38,7 @@ public class AdapterLoaiSach extends RecyclerView.Adapter<AdapterLoaiSach.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        EditText maloaisach, tenloaisach;
+        TextView maloaisach, tenloaisach;
         ImageButton sualoaisach, xoaloaisach;
         LinearLayout llloaisach;
 

@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,7 +53,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        EditText mapm, tentv, tensach, tienthue, ngaythue, trangthai;
+        TextView mapm, tentv, tensach, tienthue, ngaythue, trangthai;
         ImageButton suapm, xoapm;
         LinearLayout item_phieumuon;
 
