@@ -125,7 +125,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
 
     public void Showdata(Context context, PhieuMuon phieuMuon) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Thông Tin Phiếu Mượn");
+        builder.setTitle(context.getString(R.string.title_show_phieumuon));
         builder.setMessage("Tên Thành Viên:" + phieuMuon.getTentv() + "\nTên Sách:" + phieuMuon.getTens()
                 + "\nGiá Sách:" + phieuMuon.getGiathue() + "\nNgày Thuê:" + phieuMuon.getNgaythue() + "\nTrang Thái:" + phieuMuon.getTrangthai());
         AlertDialog alertDialog = builder.create();
@@ -176,7 +176,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
         int indextv = 0;
         int vitritv = -1;
         for (HashMap<String, Object> item : listspinnertv) {
-            if ( item.get("TenTV") == phieuMuon.getTentv()) {
+            if ( item.get("TenTV").equals(phieuMuon.getTentv())) {
                 vitritv = indextv;
             }
             indextv++;
@@ -187,7 +187,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
         int indexs = 0;
         int vitris = -1;
         for (HashMap<String, Object> item : listspinnertensach) {
-            if ( item.get("TenS") == phieuMuon.getTens()) {
+            if ( item.get("TenS").equals(phieuMuon.getTens())) {
                 vitris = indexs;
             }
             indexs++;

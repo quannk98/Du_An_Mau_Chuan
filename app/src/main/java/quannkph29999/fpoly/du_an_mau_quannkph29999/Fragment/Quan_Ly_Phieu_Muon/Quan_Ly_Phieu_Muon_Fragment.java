@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -122,18 +123,18 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialogpm_themphieumuon, null);
-        Spinner themtentv = view.findViewById(R.id.dialogpm_themtentv);
-        Spinner themtensach = view.findViewById(R.id.dialogpm_themtensach);
-        EditText themgiasach = view.findViewById(R.id.dialogpm_themgiathue);
-        EditText themngaythue = view.findViewById(R.id.dialogpm_themngaythue);
-        CheckBox themtrangthai = view.findViewById(R.id.dialogpm_themtrangthai);
-        Button themphieumuon = view.findViewById(R.id.dialogpm_btnthempm);
-        Button themthoatphieumuon = view.findViewById(R.id.dialogpm_btnthoatthempm);
+        Spinner spThanhvien = view.findViewById(R.id.dialogpm_themtentv);
+        Spinner spSach = view.findViewById(R.id.dialogpm_themtensach);
+        EditText edtGiasach = view.findViewById(R.id.dialogpm_themgiathue);
+        EditText edtNgaythue = view.findViewById(R.id.dialogpm_themngaythue);
+        CheckBox chkTrangthai = view.findViewById(R.id.dialogpm_themtrangthai);
+        Button btnThemphieuMuon = view.findViewById(R.id.dialogpm_btnthempm);
+        Button btnThoat = view.findViewById(R.id.dialogpm_btnthoatthempm);
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        themngaythue.setOnClickListener(new View.OnClickListener() {
+        edtNgaythue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
@@ -141,7 +142,7 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month = month + 1;
                         String date = dayOfMonth+"/"+month+"/"+year;
-                        themngaythue.setText(date);
+                        edtNgaythue.setText(date);
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -152,31 +153,47 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
         alertDialog.show();
         SimpleAdapter adapterthemten = new SimpleAdapter(getContext(),listspinnertv,android.R.layout.simple_list_item_1,
                 new String[]{"TenTV"},new int[]{android.R.id.text1});
-        themtentv.setAdapter(adapterthemten);
+        spThanhvien.setAdapter(adapterthemten);
         SimpleAdapter adapterthemsach = new SimpleAdapter(getContext(),listspinnertensach, android.R.layout.simple_list_item_1,
                 new String[]{"TenS"},new int[]{android.R.id.text1});
-        themtensach.setAdapter(adapterthemsach);
+        spSach.setAdapter(adapterthemsach);
 
-        themphieumuon.setOnClickListener(new View.OnClickListener() {
+
+        ArrayList<Sach> listsach = sachDAO.GetDSS();
+        spSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Sach sach = listsach.get(i);
+                edtGiasach.setText(sach.getGiasach() + "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btnThemphieuMuon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String trangthai = "" ;
-                if(themtrangthai.isChecked() == true) {
+                if(chkTrangthai.isChecked() == true) {
                     trangthai = "Đã Trả Sách";
                 }
-                else if(themtrangthai.isChecked() == false) {
+                else if(chkTrangthai.isChecked() == false) {
                     trangthai = "Chưa Trả Sách";
                 }
-                String themgaythuesach = themngaythue.getText().toString();
-                String giasach = themgiasach.getText().toString();
-                if(themngaythue.length() == 0){
-                    themngaythue.requestFocus();
-                    themngaythue.setError("Không bỏ trống ngày thuê");
+                String themgaythuesach = edtNgaythue.getText().toString();
+                String giasach = edtGiasach.getText().toString();
+                if(edtNgaythue.length() == 0){
+                    edtNgaythue.requestFocus();
+                    edtNgaythue.setError("Không bỏ trống ngày thuê");
                 }
 
                 else{
-                    HashMap<String,Object> chontentv = (HashMap<String, Object>) themtentv.getSelectedItem();
-                    HashMap<String,Object> chontensach = (HashMap<String, Object>) themtensach.getSelectedItem();
+                    HashMap<String,Object> chontentv = (HashMap<String, Object>) spThanhvien.getSelectedItem();
+                    HashMap<String,Object> chontensach = (HashMap<String, Object>) spSach.getSelectedItem();
                     String tentv = (String) chontentv.get("TenTV");
                     String tensach = (String) chontensach.get("TenS");
                     PhieuMuon themphieumuon = new PhieuMuon(themgaythuesach, trangthai,tentv,tensach,Integer.parseInt(giasach));
@@ -193,7 +210,7 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
                 }
             }
         });
-        themthoatphieumuon.setOnClickListener(new View.OnClickListener() {
+        btnThoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
