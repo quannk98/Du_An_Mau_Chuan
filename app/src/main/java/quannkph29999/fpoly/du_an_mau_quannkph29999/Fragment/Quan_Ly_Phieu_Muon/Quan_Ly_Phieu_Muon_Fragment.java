@@ -1,9 +1,12 @@
 package quannkph29999.fpoly.du_an_mau_quannkph29999.Fragment.Quan_Ly_Phieu_Muon;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -12,9 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -32,10 +37,12 @@ import java.util.HashMap;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.PhieuMuonDAO;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.SachDAO;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThanhVienDAO;
+import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThuThuDAO;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.MainActivity;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.PhieuMuon;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.Sach;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.ThanhVien;
+import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.ThuThu;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.R;
 
 
@@ -48,6 +55,9 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
     AdapterPhieuMuon adapterPhieuMuon;
     ArrayList<HashMap<String, Object>> listspinnertv;
     ArrayList<HashMap<String, Object>> listspinnertensach;
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
+    ThuThuDAO thuThuDAO;
 
 
     public Quan_Ly_Phieu_Muon_Fragment() {
@@ -129,6 +139,7 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
         CheckBox themtrangthai = view.findViewById(R.id.dialogpm_themtrangthai);
         Button themphieumuon = view.findViewById(R.id.dialogpm_btnthempm);
         Button themthoatphieumuon = view.findViewById(R.id.dialogpm_btnthoatthempm);
+        initPreferences();
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -156,16 +167,33 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
         SimpleAdapter adapterthemsach = new SimpleAdapter(getContext(),listspinnertensach, android.R.layout.simple_list_item_1,
                 new String[]{"TenS"},new int[]{android.R.id.text1});
         themtensach.setAdapter(adapterthemsach);
+        ArrayList<Sach> list = sachDAO.GetDSS();
+        themtensach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Sach sach = list.get(position);
+                themgiasach.setText(String.valueOf(sach.getGiasach()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         themphieumuon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("DATA", MODE_PRIVATE);
+                String tentt = sharedPreferences.getString("DATATEN","");
                 String trangthai = "" ;
                 if(themtrangthai.isChecked() == true) {
                     trangthai = "Đã Trả Sách";
+
                 }
                 else if(themtrangthai.isChecked() == false) {
                     trangthai = "Chưa Trả Sách";
+
                 }
                 String themgaythuesach = themngaythue.getText().toString();
                 String giasach = themgiasach.getText().toString();
@@ -179,7 +207,7 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
                     HashMap<String,Object> chontensach = (HashMap<String, Object>) themtensach.getSelectedItem();
                     String tentv = (String) chontentv.get("TenTV");
                     String tensach = (String) chontensach.get("TenS");
-                    PhieuMuon themphieumuon = new PhieuMuon(themgaythuesach, trangthai,tentv,tensach,Integer.parseInt(giasach));
+                    PhieuMuon themphieumuon = new PhieuMuon(themgaythuesach, trangthai,tentv,tensach,Integer.parseInt(giasach),tentt);
                     if(phieuMuonDAO.Thempm(themphieumuon) > 0){
                         Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                         realoandata();
@@ -200,6 +228,11 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
             }
         });
 
+    }
+    private void initPreferences() {
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        editor = sharedPreferences.edit();
     }
 
 

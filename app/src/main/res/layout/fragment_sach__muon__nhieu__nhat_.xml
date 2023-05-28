@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".Fragment.Sach_Muon_Nhieu_Nhat.Sach_Muon_Nhieu_Nhat_Fragment">
 
     <androidx.recyclerview.widget.RecyclerView

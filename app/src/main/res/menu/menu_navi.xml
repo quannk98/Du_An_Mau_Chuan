@@ -52,7 +52,7 @@
         <menu>
             <item
                 android:id="@+id/add_user"
-                android:title="Thêm Người Dùng"
+                android:title="Thêm Thành Viên"
                 android:icon="@drawable/baseline_person_add_24"
                 >
 

@@ -7,8 +7,29 @@ public class PhieuMuon {
     private String tentv;
     private String tens;
     private int giathue;
+    private String tentt;
 
-    public PhieuMuon(int mapm, String ngaythue, String trangthai, String tentv, String tens,  int giathue) {
+
+    public PhieuMuon(int mapm, String ngaythue, String trangthai, String tentv, String tens, int giathue, String tentt) {
+        this.mapm = mapm;
+        this.ngaythue = ngaythue;
+        this.trangthai = trangthai;
+        this.tentv = tentv;
+        this.tens = tens;
+        this.giathue = giathue;
+        this.tentt = tentt;
+    }
+
+    public PhieuMuon(String ngaythue, String trangthai, String tentv, String tens, int giathue, String tentt) {
+        this.ngaythue = ngaythue;
+        this.trangthai = trangthai;
+        this.tentv = tentv;
+        this.tens = tens;
+        this.giathue = giathue;
+        this.tentt = tentt;
+    }
+
+    public PhieuMuon(int mapm, String ngaythue, String trangthai, String tentv, String tens, int giathue) {
         this.mapm = mapm;
         this.ngaythue = ngaythue;
         this.trangthai = trangthai;
@@ -83,5 +104,13 @@ public class PhieuMuon {
 
     public void setGiathue(int giathue) {
         this.giathue = giathue;
+    }
+
+    public String getTentt() {
+        return tentt;
+    }
+
+    public void setTentt(String tentt) {
+        this.tentt = tentt;
     }
 }

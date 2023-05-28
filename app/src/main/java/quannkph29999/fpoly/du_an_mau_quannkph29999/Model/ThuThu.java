@@ -11,6 +11,11 @@ public class ThuThu {
         this.matkhau = matkhau;
     }
 
+    public ThuThu(String matt, String matkhau) {
+        this.matt = matt;
+        this.matkhau = matkhau;
+    }
+
     public ThuThu() {
     }
 

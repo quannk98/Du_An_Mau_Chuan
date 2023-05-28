@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemtop"
-    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:background="@drawable/custome_listview"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="40dp">
     <TextView
+        android:id="@+id/a1"
         android:text="Sách:"
+        android:textSize="20dp"
         android:textStyle="bold"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/itemtop_tensach"
+        android:layout_toEndOf="@+id/a1"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="200dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/a2"
+        android:layout_toEndOf="@+id/itemtop_tensach"
+        android:text="Số Lượng:"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/holo_blue_light"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <EditText
-        android:id="@+id/itemtop_tensach"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
     <TextView
-        android:text="Số Lượng:"
-        android:textStyle="bold"
-        android:layout_marginLeft="180dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <EditText
         android:id="@+id/itemtop_soluong"
+        android:layout_toEndOf="@+id/a2"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+</RelativeLayout>

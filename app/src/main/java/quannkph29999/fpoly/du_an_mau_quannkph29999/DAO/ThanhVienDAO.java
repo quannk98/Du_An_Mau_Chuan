@@ -56,5 +56,16 @@ public class ThanhVienDAO {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         return sqLiteDatabase.delete("thanhvien","MaTV = ?",new String[]{String.valueOf(matv)});
     }
+    public boolean CheckLogintv(String tentv,String cccd){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM thanhvien WHERE TenTV = ? AND CCCD = ?",
+                new String[]{tentv,cccd});
+        if(cursor.getCount() != 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 }

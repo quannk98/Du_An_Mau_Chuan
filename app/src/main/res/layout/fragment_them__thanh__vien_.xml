@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginLeft="90dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/images" />
 
     <TextView
@@ -25,6 +25,7 @@
         android:id="@+id/themtv_tendangnhapdk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
         android:textStyle="bold" />
 
     <TextView
@@ -39,20 +40,7 @@
         android:id="@+id/themtv_hotendk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="CCCD:"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/themtv_cccddk"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
         android:textStyle="bold" />
 
     <TextView
@@ -68,6 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
         android:textStyle="bold" />
 
     <ImageButton
@@ -76,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="360dp"
         android:layout_marginTop="-50dp"
-        android:src="@drawable/showpassword" />
+        android:src="@drawable/hidepassword" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,6 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
         android:textStyle="bold" />
 
     <ImageButton
@@ -99,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="360dp"
         android:layout_marginTop="-50dp"
-        android:src="@drawable/showpassword" />
+        android:src="@drawable/hidepassword" />
 
     <Button
         android:id="@+id/themtv_btndangky"

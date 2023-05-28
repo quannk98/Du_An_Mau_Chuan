@@ -139,17 +139,18 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
         SimpleAdapter adapter = new SimpleAdapter(context, listspinnerls, android.R.layout.simple_list_item_1,
                 new String[]{"TenLS"}, new int[]{android.R.id.text1});
         sualoaisach.setAdapter(adapter);
-        int index = 0;
         int vitri = -1;
+        int index = 0;
         for (HashMap<String, Object> item : listspinnerls) {
-            if ( item.get("TenLS") == sach.getTenls()) {
-                vitri = index;
+            if ( item.get("TenLS").equals(sach.getTenls())) {
+               index = vitri;
             }
             index++;
         }
+        sualoaisach.setSelection(index);
         suatensach.setText(sach.getTensach());
         suagiasach.setText(String.valueOf(sach.getGiasach()));
-        sualoaisach.setSelection(vitri);
+
         btnsuasach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

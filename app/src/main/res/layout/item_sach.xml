@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemsach"
-    android:orientation="vertical"
     android:background="@drawable/custome_listview"
-    android:layout_marginTop="10dp"
+    android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/t1"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/a1"
             android:text="Mã Sách:"
             android:textColor="@android:color/holo_red_light"
             android:textStyle="bold"
-            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/itemsach_masach"
+            android:layout_toEndOf="@+id/a1"
             android:textStyle="bold"
+            android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="30dp"/>
-    </LinearLayout>
-    <LinearLayout
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/t2"
+        android:layout_below="@+id/t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/a2"
             android:text="Tên Sách:"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -37,32 +45,45 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/itemsach_tensach"
+            android:layout_toEndOf="@+id/a2"
             android:textSize="20dp"
             android:layout_marginLeft="5dp"
             android:textStyle="bold"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="30dp"/>
-    </LinearLayout>
-    <LinearLayout
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/t3"
+        android:layout_below="@+id/t2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/a3"
             android:text="Giá Thuê:"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="30dp"/>
         <TextView
             android:id="@+id/itemsach_giasach"
+            android:layout_toEndOf="@+id/a3"
             android:textStyle="bold"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <LinearLayout
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/t4"
+        android:layout_below="@+id/t3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
+            android:id="@+id/a4"
             android:text="Loại Sách:"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
@@ -70,23 +91,27 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/itemsach_loaisach"
+            android:layout_toEndOf="@+id/a4"
             android:textStyle="bold"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="30dp"/>
-    </LinearLayout>
+
+    </RelativeLayout>
+
     <ImageButton
         android:id="@+id/itemsach_suas"
+        android:layout_toEndOf="@+id/t2"
         android:src="@drawable/baseline_edit_24"
-        android:layout_marginTop="-110dp"
-        android:layout_marginLeft="310dp"
+        android:layout_marginTop="20dp"
         android:layout_width="40dp"
         android:layout_height="80dp"/>
     <ImageButton
         android:id="@+id/itemsach_xoas"
         android:src="@drawable/baseline_delete_forever_24"
-        android:layout_marginTop="-80dp"
-        android:layout_marginLeft="360dp"
+        android:layout_toEndOf="@+id/itemsach_suas"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="40dp"
         android:layout_height="80dp"/>
-</LinearLayout>
+</RelativeLayout>

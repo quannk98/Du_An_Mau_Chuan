@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login2"
+    android:background="@drawable/login1"
     android:orientation="vertical"
     tools:context=".ScreenLogin">
 
     <TextView
+        android:id="@+id/t1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
@@ -21,49 +22,68 @@
 
     <EditText
         android:id="@+id/slogin_tendangnhap"
+        android:layout_below="@+id/t1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="10dp"
         android:background="@drawable/custome_listview"
         android:hint="Tên Đăng Nhập"
         android:paddingLeft="10dp"
 
         />
-
-    <EditText
-        android:id="@+id/slogin_mkdangnhap"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/custome_listview"
-        android:hint=" Mật Khẩu"
-        android:inputType="textPassword"
-        android:paddingLeft="10dp" />
-
-    <ImageButton
-        android:id="@+id/slogin_showmk"
+    <RelativeLayout
+        android:id="@+id/t2"
+        android:layout_below="@id/slogin_tendangnhap"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="360dp"
-        android:layout_marginTop="-50dp"
-        android:src="@drawable/hidepassword" />
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/slogin_mkdangnhap"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custome_listview"
+            android:hint=" Mật Khẩu"
+            android:gravity=""
+            android:inputType="textPassword"
+            android:paddingLeft="10dp" />
 
+        <ImageButton
+            android:id="@+id/slogin_showmk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/slogin_mkdangnhap"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="-60dp"
+            android:src="@drawable/hidepassword" />
+    </RelativeLayout>
+
+
+<RelativeLayout
+    android:id="@+id/t3"
+    android:layout_below="@+id/t2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <CheckBox
         android:id="@+id/slogin_luudp"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="-25dp"
+        android:layout_toEndOf="@+id/slogin_luudp"
+        android:layout_marginTop="15dp"
+
         android:text="Lưu Đăng Nhập"
         android:textColor="@android:color/holo_red_light"
         android:textStyle="bold" />
+</RelativeLayout>
+
 
     <Button
         android:id="@+id/slogin_btndangnhap"
+        android:layout_below="@+id/t3"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginLeft="40dp"
@@ -74,12 +94,15 @@
 
     <Button
         android:id="@+id/slogin_btnthoat"
+        android:layout_below="@+id/t3"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/slogin_btndangnhap"
+        android:layout_marginLeft="30dp"
         android:text="thoát"
 
         />
 
-</LinearLayout>
+
+</RelativeLayout>

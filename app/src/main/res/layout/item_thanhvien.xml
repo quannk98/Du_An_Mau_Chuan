@@ -1,87 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemtv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/custome_listview"
-    android:orientation="vertical">
+    android:layout_margin="10dp"
+    android:background="@drawable/custome_listview">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/t1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
         <TextView
+            android:id="@+id/a1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="Mã Thành Viên:"
             android:textColor="@android:color/holo_red_light"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/itemtv_matv"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/a1"
+            android:textSize="20dp"
             android:textStyle="bold" />
-    </LinearLayout>
 
-    <LinearLayout
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/t2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t1">
 
         <TextView
+            android:id="@+id/a2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:text="Tên Thành Viên:"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/itemtv_tentv"
-            android:layout_width="140dp"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/a2"
             android:textSize="20dp"
             android:textStyle="bold" />
-    </LinearLayout>
 
-    <LinearLayout
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/t3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t2">
 
         <TextView
+            android:id="@+id/a3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:text="CCCD:"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/itemtv_cccdtv"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/a3"
             android:textStyle="bold" />
-    </LinearLayout>
+
+    </RelativeLayout>
+
 
     <ImageButton
         android:id="@+id/itemtv_suatv"
         android:layout_width="40dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="-85dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/t2"
         android:src="@drawable/baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/itemtv_xoatv"
         android:layout_width="40dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="360dp"
-        android:layout_marginTop="-70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/itemtv_suatv"
         android:src="@drawable/baseline_delete_forever_24" />
-</LinearLayout>
+</RelativeLayout>

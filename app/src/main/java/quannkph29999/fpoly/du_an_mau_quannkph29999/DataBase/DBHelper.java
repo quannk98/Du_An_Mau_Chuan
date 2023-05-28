@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
            String bangphieumuon = "CREATE TABLE phieumuon(MaPM integer primary key autoincrement,ngaythue text ,trangthai text ," +
                    "TenTV text  REFERENCES thanhvien(TenTV)," +
                  "TenS text  REFERENCES sach(TenS)," +
-                 "GiathueS integer  REFERENCES sach(GiathueS)  )";
+                 "GiathueS integer  REFERENCES sach(GiathueS),TenTT text REFERENCES thuthu(TenTT)  )";
          db.execSQL(bangphieumuon);
            String bangthuthu = "CREATE TABLE thuthu(MaTT text primary key ,TenTT text ,matkhau text )";
          db.execSQL(bangthuthu);

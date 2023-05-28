@@ -47,11 +47,18 @@ public class ThuThuDAO {
         contentValues.put("matkhau",thuThu.getMatkhau());
         return sqLiteDatabase.update("thuthu",contentValues,"MaTT = ?",new String[]{String.valueOf(thuThu.getMatt())});
     }
-    public long XoaTT(ThuThu thuThu){
+    public long SuaPassTT(ThuThu thuThu){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        return sqLiteDatabase.delete("thuthu","MaTT = ?",new String[]{String.valueOf(thuThu.getMatt())});
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("MaTT",thuThu.getMatt());
+        contentValues.put("matkhau",thuThu.getMatkhau());
+        return sqLiteDatabase.update("thuthu",contentValues,"MaTT = ?",new String[]{String.valueOf(thuThu.getMatt())});
     }
-    public boolean checkLogin(String Matt, String matkhau){
+    public long XoaTT(String Matt){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        return sqLiteDatabase.delete("thuthu","MaTT = ?",new String[]{String.valueOf(Matt)});
+    }
+    public boolean checkLogintt(String Matt, String matkhau){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM thuthu WHERE MaTT = ? AND matkhau = ?",
                 new String[]{Matt, matkhau});

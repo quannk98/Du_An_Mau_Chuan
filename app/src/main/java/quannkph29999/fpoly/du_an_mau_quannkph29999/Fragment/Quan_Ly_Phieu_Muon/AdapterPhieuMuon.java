@@ -1,12 +1,16 @@
 package quannkph29999.fpoly.du_an_mau_quannkph29999.Fragment.Quan_Ly_Phieu_Muon;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +45,8 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
     Context context;
     ArrayList<HashMap<String, Object>> listspinnertv;
     ArrayList<HashMap<String, Object>> listspinnertensach;
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
 
     public AdapterPhieuMuon(ArrayList<PhieuMuon> listpm, PhieuMuonDAO phieuMuonDAO, Context context,
                             ArrayList<HashMap<String, Object>> listspinnertv,
@@ -53,7 +59,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mapm, tentv, tensach, tienthue, ngaythue, trangthai;
+        TextView mapm, tentv, tensach, tienthue, ngaythue, trangthai,tenthuthu;
         ImageButton suapm, xoapm;
         LinearLayout item_phieumuon;
 
@@ -65,6 +71,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
             tienthue = itemView.findViewById(R.id.itemphieumuon_tienthue);
             ngaythue = itemView.findViewById(R.id.itemphieumuon_ngaythue);
             trangthai = itemView.findViewById(R.id.itemphieumuon_trangthai);
+            tenthuthu = itemView.findViewById(R.id.itemphieumuon_tentt);
             suapm = itemView.findViewById(R.id.itemphieumuon_sua);
             xoapm = itemView.findViewById(R.id.itemphieumuon_xoa);
             item_phieumuon = itemView.findViewById(R.id.itemphieumuon);
@@ -86,6 +93,8 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
         holder.tienthue.setText(String.valueOf(listpm.get(position).getGiathue()));
         holder.trangthai.setText(listpm.get(position).getTrangthai());
         holder.ngaythue.setText(listpm.get(position).getNgaythue());
+        initPreferences();
+        holder.tenthuthu.setText(listpm.get(position).getTentt());
         holder.item_phieumuon.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -173,33 +182,38 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
         SimpleAdapter adaptersuaten = new SimpleAdapter(context, listspinnertv, android.R.layout.simple_list_item_1,
                 new String[]{"TenTV"}, new int[]{android.R.id.text1});
         suatentv.setAdapter(adaptersuaten);
-        int indextv = 0;
-        int vitritv = -1;
-        for (HashMap<String, Object> item : listspinnertv) {
-            if ( item.get("TenTV") == phieuMuon.getTentv()) {
-                vitritv = indextv;
-            }
-            indextv++;
-        }
+      int indextv = 0;
+      int vitritv = -1;
+      for(HashMap<String,Object> itemtv : listspinnertv){
+          if(itemtv.get("TenTV").equals(phieuMuon.getTentv()) ){
+              indextv = vitritv;
+          }
+          indextv++;
+      }
+
+        suatentv.setSelection(indextv);
         SimpleAdapter adaptersuasach = new SimpleAdapter(context, listspinnertensach, android.R.layout.simple_list_item_1,
                 new String[]{"TenS"}, new int[]{android.R.id.text1});
         suatensach.setAdapter(adaptersuasach);
-        int indexs = 0;
-        int vitris = -1;
-        for (HashMap<String, Object> item : listspinnertensach) {
-            if ( item.get("TenS") == phieuMuon.getTens()) {
-                vitris = indexs;
+        int indexts = 0;
+        int vitrits = -1;
+        for(HashMap<String,Object> itemtv : listspinnertensach){
+            if(itemtv.get("TenS").equals(phieuMuon.getTens()) ){
+                indexts = vitrits;
             }
-            indexs++;
+            indexts++;
         }
+        suatensach.setSelection(indexts);
 
         suagiathue.setText(String.valueOf(phieuMuon.getGiathue()));
         suangaythue.setText(phieuMuon.getNgaythue());
-        suatentv.setSelection(vitritv);
-        suatensach.setSelection(vitris);
+
+
         suaphieumuon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("DATA", MODE_PRIVATE);
+                String tentt = sharedPreferences.getString("DATATEN","");
                 String suangaythuesach = suangaythue.getText().toString();
                 int giathue = Integer.parseInt(suagiathue.getText().toString());
                 if (suangaythue.length() == 0) {
@@ -217,7 +231,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
                     } else if (suatrangthai.isChecked() == false) {
                         trangthaisua = "Chưa Trả Sách";
                     }
-                    PhieuMuon suaphieumuon = new PhieuMuon(maphieumuon, suangaythuesach, trangthaisua, tentv, tensach,giathue );
+                    PhieuMuon suaphieumuon = new PhieuMuon(maphieumuon, suangaythuesach, trangthaisua, tentv, tensach,giathue,tentt );
                     if (phieuMuonDAO.Suapm(suaphieumuon) > 0) {
                         Toast.makeText(context, "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
                         listpm.clear();
@@ -240,6 +254,11 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
             }
         });
 
+    }
+    private void initPreferences() {
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = sharedPreferences.edit();
     }
 
 

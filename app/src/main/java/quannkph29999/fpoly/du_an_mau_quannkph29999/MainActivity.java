@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -34,11 +35,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       replaceFragment(new Quan_Ly_Phieu_Muon_Fragment());
+        replaceFragment(new Quan_Ly_Phieu_Muon_Fragment());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerlayout);
         navigationView = findViewById(R.id.navi);
+        Bundle check = getIntent().getExtras();
+       boolean taikhoandn = check.getBoolean("thanhvien");
+        if(taikhoandn == true){
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.menu_user);
+        }
+        else if(taikhoandn == false){
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.menu_navi);
+        }
+
+
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, toolbar, 0, 0);
         drawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
@@ -105,8 +118,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 alertDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        MainActivity.super.onBackPressed();
+                        Intent intent = new Intent(MainActivity.this,ScreenLogin.class);
+                        startActivity(intent);
                     }
                 });
                 alertDialog.show();
