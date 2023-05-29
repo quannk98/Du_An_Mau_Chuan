@@ -205,7 +205,6 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
             indexts++;
         }
         suatensach.setSelection(indexts);
-
         suagiathue.setText(String.valueOf(phieuMuon.getGiathue()));
         suangaythue.setText(phieuMuon.getNgaythue());
 

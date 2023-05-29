@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DataBase.DBHelper;
-import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.PhieuMuon;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.Sach;
-import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.TopBook;
 
 public class ThongKeDAO {
     private DBHelper dbHelper;
@@ -27,17 +25,13 @@ public class ThongKeDAO {
     }
 
     @SuppressLint("Range")
-    public List<TopBook> getTop() {
+    public List<Sach> getTop() {
         String sqlTop = "SELECT TenS,count(TenS) as soluong FROM phieumuon GROUP BY TenS ORDER BY soluong DESC LIMIT 10";
-        List<TopBook> list = new ArrayList<>();
+        List<Sach> list = new ArrayList<>();
         SachDAO sachDAO = new SachDAO(context);
         Cursor cursor = db.rawQuery(sqlTop, null);
         while (cursor.moveToNext()) {
-            TopBook topBook = new TopBook();
-            Sach tensach = sachDAO.GetDSS().get(cursor.getColumnIndex("TenS"));
-            topBook.setTensach(tensach.getTensach());
-            topBook.setSoluong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("soluong"))));
-            list.add(topBook);
+           list.add(new Sach(cursor.getString(0),cursor.getInt(1)));
         }
         return list;
     }

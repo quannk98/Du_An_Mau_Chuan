@@ -34,12 +34,14 @@ public class PhieuMuonDAO {
                 phieuMuon.setTens(cursor.getString(4));
                 phieuMuon.setGiathue(Integer.parseInt(cursor.getString(5)));
                 phieuMuon.setTentt(cursor.getString(6));
+                phieuMuon.setMas(Integer.parseInt(cursor.getString(7)));
                 listpm.add(phieuMuon);
             } while (cursor.moveToNext());
         }
         return listpm;
 
     }
+
 
     public long Thempm(PhieuMuon phieuMuon) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
@@ -50,6 +52,7 @@ public class PhieuMuonDAO {
         contentValues.put("TenS", phieuMuon.getTens());
         contentValues.put("GiathueS", phieuMuon.getGiathue());
         contentValues.put("TenTT",phieuMuon.getTentt());
+        contentValues.put("MaS",phieuMuon.getMas());
         return sqLiteDatabase.insert("phieumuon", null, contentValues);
 
     }
@@ -63,6 +66,7 @@ public class PhieuMuonDAO {
         contentValues.put("TenS", phieuMuon.getTens());
         contentValues.put("GiathueS", phieuMuon.getGiathue());
         contentValues.put("TenTT",phieuMuon.getTentt());
+        contentValues.put("MaS",phieuMuon.getMas());
         return sqLiteDatabase.update("phieumuon", contentValues, "MaPM = ?", new String[]{String.valueOf(phieuMuon.getMapm())});
     }
 

@@ -5,12 +5,20 @@ public class Sach {
     private String tensach;
     private int giasach;
     private String tenls;
+    int soluong;
 
     public Sach(int masach, String tensach, int giasach, String tenls) {
         this.masach = masach;
         this.tensach = tensach;
         this.giasach = giasach;
         this.tenls = tenls;
+    }
+
+    public Sach(String tensach, int giasach, String tenls, int soluong) {
+        this.tensach = tensach;
+        this.giasach = giasach;
+        this.tenls = tenls;
+        this.soluong = soluong;
     }
 
     public Sach(String tensach, int giasach, String tenls) {
@@ -20,6 +28,11 @@ public class Sach {
     }
 
     public Sach() {
+    }
+
+    public Sach(String tensach, int soluong) {
+        this.tensach = tensach;
+        this.soluong = soluong;
     }
 
     public int getMasach() {
@@ -52,5 +65,13 @@ public class Sach {
 
     public void setTenls(String tenls) {
         this.tenls = tenls;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 }

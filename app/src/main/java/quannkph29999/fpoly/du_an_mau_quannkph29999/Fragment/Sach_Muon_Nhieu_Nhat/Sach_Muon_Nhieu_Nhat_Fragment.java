@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -14,13 +15,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThongKeDAO;
-import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.TopBook;
+import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.Sach;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.R;
 
 
 public class Sach_Muon_Nhieu_Nhat_Fragment extends Fragment {
         AdapterTopSach adapterTopSach;
-        ArrayList<TopBook> listtop;
+        ArrayList<Sach> listtop;
         RecyclerView recyclerView;
         ThongKeDAO thongKeDAO;
 
@@ -42,9 +43,11 @@ public class Sach_Muon_Nhieu_Nhat_Fragment extends Fragment {
        View view = inflater.inflate(R.layout.fragment_sach__muon__nhieu__nhat_, container, false);
        recyclerView = view.findViewById(R.id.smnn_recycview);
        thongKeDAO = new ThongKeDAO(getContext());
-       listtop = (ArrayList<TopBook>) thongKeDAO.getTop();
+       listtop = (ArrayList<Sach>) thongKeDAO.getTop();
+       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
        adapterTopSach = new AdapterTopSach(getContext(),listtop);
        recyclerView.setAdapter(adapterTopSach);
+       recyclerView.setLayoutManager(linearLayoutManager);
         return view;
     }
 

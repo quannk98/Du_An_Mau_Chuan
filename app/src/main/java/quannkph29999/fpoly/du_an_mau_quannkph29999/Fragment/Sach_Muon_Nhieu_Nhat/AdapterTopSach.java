@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.TopBook;
+import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.Sach;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.R;
 
 public class AdapterTopSach extends RecyclerView.Adapter<AdapterTopSach.ViewHolder> {
     Context context;
-    ArrayList<TopBook> listtop;
+    ArrayList<Sach> listtop;
 
-    public AdapterTopSach(Context context, ArrayList<TopBook> listtop) {
+    public AdapterTopSach(Context context, ArrayList<Sach> listtop) {
         this.context = context;
         this.listtop = listtop;
     }
