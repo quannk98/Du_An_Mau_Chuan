@@ -22,70 +22,74 @@
 
     <EditText
         android:id="@+id/slogin_tendangnhap"
-        android:layout_below="@+id/t1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@+id/t1"
         android:layout_margin="10dp"
         android:background="@drawable/custome_listview"
         android:hint="Tên Đăng Nhập"
         android:paddingLeft="10dp"
 
         />
+
     <RelativeLayout
         android:id="@+id/t2"
-        android:layout_below="@id/slogin_tendangnhap"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slogin_tendangnhap">
+
         <EditText
             android:id="@+id/slogin_mkdangnhap"
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
             android:layout_height="50dp"
+            android:layout_margin="10dp"
             android:background="@drawable/custome_listview"
             android:hint=" Mật Khẩu"
-            android:gravity=""
             android:inputType="textPassword"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp" />
 
         <ImageButton
             android:id="@+id/slogin_showmk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/slogin_mkdangnhap"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="-60dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/slogin_mkdangnhap"
             android:src="@drawable/hidepassword" />
     </RelativeLayout>
 
 
-<RelativeLayout
-    android:id="@+id/t3"
-    android:layout_below="@+id/t2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <CheckBox
-        android:id="@+id/slogin_luudp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp" />
-    <TextView
+    <RelativeLayout
+        android:id="@+id/t3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/slogin_luudp"
-        android:layout_marginTop="15dp"
+        android:layout_below="@+id/t2">
 
-        android:text="Lưu Đăng Nhập"
-        android:textColor="@android:color/holo_red_light"
-        android:textStyle="bold" />
-</RelativeLayout>
+        <CheckBox
+            android:id="@+id/slogin_luudp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/slogin_luudp"
+
+            android:text="Lưu Đăng Nhập"
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 
     <Button
         android:id="@+id/slogin_btndangnhap"
-        android:layout_below="@+id/t3"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        android:layout_below="@+id/t3"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:text="Đăng Nhập"
@@ -94,12 +98,12 @@
 
     <Button
         android:id="@+id/slogin_btnthoat"
-        android:layout_below="@+id/t3"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        android:layout_below="@+id/t3"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/slogin_btndangnhap"
-        android:layout_marginLeft="30dp"
         android:text="thoát"
 
         />

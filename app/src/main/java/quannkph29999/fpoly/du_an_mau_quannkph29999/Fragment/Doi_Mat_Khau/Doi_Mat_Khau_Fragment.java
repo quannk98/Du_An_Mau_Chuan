@@ -2,7 +2,9 @@ package quannkph29999.fpoly.du_an_mau_quannkph29999.Fragment.Doi_Mat_Khau;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,20 +20,23 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThanhVienDAO;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThuThuDAO;
+import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.ThanhVien;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.ThuThu;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.R;
 
 
 public class Doi_Mat_Khau_Fragment extends Fragment {
     EditText mkcu, mkmoi, nlmkmoi;
-    Button luumk,huy;
+    Button luumk, huy;
     ImageButton showmkcu, showmkm, shownlmk;
     boolean checkdshowmk = true;
     SharedPreferences sharedPreferences;
 
     SharedPreferences.Editor editor;
     ThuThuDAO thuThuDAO;
+    ThanhVienDAO thanhVienDAO;
 
 
     public Doi_Mat_Khau_Fragment() {
@@ -113,37 +118,50 @@ public class Doi_Mat_Khau_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 thuThuDAO = new ThuThuDAO(getContext());
+                thanhVienDAO = new ThanhVienDAO(getContext());
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences("DATA", MODE_PRIVATE);
-                String user = sharedPreferences.getString("DATATEN","");
-                String passold = sharedPreferences.getString("DATAMK","");
+                String user = sharedPreferences.getString("DATATEN", "");
+                String passold = sharedPreferences.getString("DATAMK", "");
                 String passnew = mkmoi.getText().toString();
                 String rePassnew = nlmkmoi.getText().toString();
-                if(mkcu.length() == 0 || mkmoi.length() == 0 || nlmkmoi.length() == 0){
+                if (mkcu.length() == 0 || mkmoi.length() == 0 || nlmkmoi.length() == 0) {
                     Toast.makeText(getContext(), "Nhập Đầy Đủ Thông Tin", Toast.LENGTH_SHORT).show();
-                }
-                else if(!passold.equals(mkcu.getText().toString())){
-                    Toast.makeText(getContext(), "Mật Khẩu Cũ Không Đúng", Toast.LENGTH_SHORT).show();
-                }
-                else if(!passnew.equals(rePassnew)){
-                    Toast.makeText(getContext(), "Mật Khẩu Mới Không Trùng Khớp", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    ThuThu suapasstt = new ThuThu(user,passnew);
-                    if(thuThuDAO.SuaPassTT(suapasstt) > 0){
-                        Toast.makeText(getContext(), "Đổi Mật Khẩu Thành Công", Toast.LENGTH_SHORT).show();
-                        mkcu.setText("");
-                        mkmoi.setText("");
-                        nlmkmoi.setText("");
+                } else if (!passold.equals(mkcu.getText().toString())) {
+                    Toast.makeText(getContext(), "Mật Khẩu Hoặc CCCD Cũ Không Đúng", Toast.LENGTH_SHORT).show();
+                } else if (!passnew.equals(rePassnew)) {
+                    Toast.makeText(getContext(), "Mật Khẩu Hoặc CCCD Mới Không Trùng Khớp", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean taikhoandmk = getArguments().getBoolean("dmktt");
+                    ThuThu suapasstt = new ThuThu(user, passnew);
+                    if (taikhoandmk == true) {
+                        if (thuThuDAO.SuaPassTT(suapasstt) > 0) {
+                            Toast.makeText(getContext(), "Đổi Mật Khẩu Thành Công", Toast.LENGTH_SHORT).show();
+                            mkcu.setText("");
+                            mkmoi.setText("");
+                            nlmkmoi.setText("");
+                        } else {
+                            Toast.makeText(getContext(), "Đổi Mật Khẩu(CCCD) Thất Bại", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        ThanhVien suapsstv = new ThanhVien(user, passnew);
+                        if (thanhVienDAO.SuaTv(suapsstv) > 0) {
+                            Toast.makeText(getContext(), "Đổi CCCD Thành Công", Toast.LENGTH_SHORT).show();
+                            mkcu.setText("");
+                            mkmoi.setText("");
+                            nlmkmoi.setText("");
+                        } else {
+                            Toast.makeText(getContext(), "Đổi Mật Khẩu(CCCD) Thất Bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else {
-                        Toast.makeText(getContext(), "Đổi Mật Khẩu Thất Bại", Toast.LENGTH_SHORT).show();
-                    }
+
+
                 }
             }
 
 
         });
     }
+
     private void initPreferences() {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());

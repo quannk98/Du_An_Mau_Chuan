@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThanhVienDAO;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.DAO.ThuThuDAO;
+import quannkph29999.fpoly.du_an_mau_quannkph29999.Fragment.Doi_Mat_Khau.Doi_Mat_Khau_Fragment;
 import quannkph29999.fpoly.du_an_mau_quannkph29999.Model.ThuThu;
 
 public class ScreenLogin extends AppCompatActivity {
@@ -82,6 +83,10 @@ public class ScreenLogin extends AppCompatActivity {
                     Intent intenttt = new Intent(ScreenLogin.this, MainActivity.class);
                     intenttt.putExtra("thuthu",true);
                     startActivity(intenttt);
+                    Bundle checkdmk =  new Bundle();
+                    checkdmk.putBoolean("dmktt", true);
+                    Doi_Mat_Khau_Fragment fragmentdmk = new Doi_Mat_Khau_Fragment();
+                    fragmentdmk.setArguments(checkdmk);
                     Toast.makeText(ScreenLogin.this, "Đăng Nhập Bằng Tài Khoản Thủ Thư Thành Công", Toast.LENGTH_SHORT).show();
                 }
                 else if(thanhVienDAO.CheckLogintv(user,pass) == true){

@@ -52,18 +52,27 @@ public class ThanhVienDAO {
 
         return sqLiteDatabase.update("thanhvien", contentValues, "MaTV = ?", new String[]{String.valueOf(thanhVien.getMatv())});
     }
-    public long XoaTv(int matv ){
+
+//    public long SuaCCCD(ThanhVien thanhVien) {
+//        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("CCCD", thanhVien.getCccd());
+//
+//        return sqLiteDatabase.update("thanhvien", contentValues, "MaTV = ?", new String[]{String.valueOf(thanhVien.getMatv())});
+//    }
+
+    public long XoaTv(int matv) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        return sqLiteDatabase.delete("thanhvien","MaTV = ?",new String[]{String.valueOf(matv)});
+        return sqLiteDatabase.delete("thanhvien", "MaTV = ?", new String[]{String.valueOf(matv)});
     }
-    public boolean CheckLogintv(String tentv,String cccd){
+
+    public boolean CheckLogintv(String tentv, String cccd) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM thanhvien WHERE TenTV = ? AND CCCD = ?",
-                new String[]{tentv,cccd});
-        if(cursor.getCount() != 0){
+                new String[]{tentv, cccd});
+        if (cursor.getCount() != 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -61,7 +62,7 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView mapm, tentv, tensach, tienthue, ngaythue, trangthai,tenthuthu;
         ImageButton suapm, xoapm;
-        LinearLayout item_phieumuon;
+        RelativeLayout item_phieumuon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

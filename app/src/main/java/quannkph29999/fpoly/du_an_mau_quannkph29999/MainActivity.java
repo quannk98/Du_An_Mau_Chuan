@@ -41,12 +41,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawerlayout);
         navigationView = findViewById(R.id.navi);
         Bundle check = getIntent().getExtras();
-       boolean taikhoandn = check.getBoolean("thanhvien");
-        if(taikhoandn == true){
+        boolean taikhoandn = check.getBoolean("thanhvien");
+        if (taikhoandn == true) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_user);
-        }
-        else if(taikhoandn == false){
+        } else if (taikhoandn == false) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_navi);
         }
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 alertDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(MainActivity.this,ScreenLogin.class);
+                        Intent intent = new Intent(MainActivity.this, ScreenLogin.class);
                         startActivity(intent);
                     }
                 });
@@ -131,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
+
     public void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.layout_content, fragment);

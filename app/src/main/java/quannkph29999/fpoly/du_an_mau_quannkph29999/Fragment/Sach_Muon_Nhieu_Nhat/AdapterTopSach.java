@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,7 @@ public class AdapterTopSach extends RecyclerView.Adapter<AdapterTopSach.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tensach,soluongsach;
 
-        LinearLayout topsach;
+        RelativeLayout topsach;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

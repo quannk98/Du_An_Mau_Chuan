@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView masach, tensach, giathue, loaisach;
         ImageButton suasach, xoasach;
-        LinearLayout llsach;
+        RelativeLayout llsach;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

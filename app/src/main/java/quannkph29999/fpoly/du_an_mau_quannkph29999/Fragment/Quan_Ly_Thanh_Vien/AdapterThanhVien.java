@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ public class AdapterThanhVien extends RecyclerView.Adapter<AdapterThanhVien.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView matv, tentv, cccd;
         ImageButton suatv, xoatv;
-        LinearLayout lltv;
+        RelativeLayout lltv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
