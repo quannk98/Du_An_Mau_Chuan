@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:gravity="center_vertical"
     android:background="@drawable/custome_listview">
 
     <RelativeLayout
@@ -95,15 +96,16 @@
         android:layout_width="40dp"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/t2"
+        android:layout_toLeftOf="@+id/itemtv_xoatv"
         android:src="@drawable/baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/itemtv_xoatv"
         android:layout_width="40dp"
         android:layout_height="70dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/itemtv_suatv"
+        android:layout_alignParentEnd="true"
         android:src="@drawable/baseline_delete_forever_24" />
 </RelativeLayout>

@@ -81,12 +81,19 @@ public class ScreenLogin extends AppCompatActivity {
                 } else if (thuThuDAO.checkLogintt(user, pass) == true) {
                     rememberUser(user,pass,luutaikhoan.isChecked());
                     Intent intenttt = new Intent(ScreenLogin.this, MainActivity.class);
-                    intenttt.putExtra("thuthu",true);
-                    startActivity(intenttt);
+
                     Bundle checkdmk =  new Bundle();
                     checkdmk.putBoolean("dmktt", true);
-                    Doi_Mat_Khau_Fragment fragmentdmk = new Doi_Mat_Khau_Fragment();
-                    fragmentdmk.setArguments(checkdmk);
+
+                    intenttt.putExtra("thuthu",true);
+                    intenttt.putExtras(checkdmk);
+
+
+                    startActivity(intenttt);
+
+
+//                    Doi_Mat_Khau_Fragment fragmentdmk = new Doi_Mat_Khau_Fragment();
+//                    fragmentdmk.setArguments(checkdmk);
                     Toast.makeText(ScreenLogin.this, "Đăng Nhập Bằng Tài Khoản Thủ Thư Thành Công", Toast.LENGTH_SHORT).show();
                 }
                 else if(thanhVienDAO.CheckLogintv(user,pass) == true){

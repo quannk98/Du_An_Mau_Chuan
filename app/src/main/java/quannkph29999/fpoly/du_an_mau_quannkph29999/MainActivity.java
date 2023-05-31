@@ -102,7 +102,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.change_password:
                 setTitle("Đổi Mật Khẩu");
-                replaceFragment(new Doi_Mat_Khau_Fragment());
+
+                Doi_Mat_Khau_Fragment fmDoiMatkhau = new Doi_Mat_Khau_Fragment();
+
+                Bundle data = getIntent().getExtras();
+                fmDoiMatkhau.setArguments(data);
+
+                replaceFragment(fmDoiMatkhau);
                 drawerLayout.close();
                 break;
             case R.id.log_out:

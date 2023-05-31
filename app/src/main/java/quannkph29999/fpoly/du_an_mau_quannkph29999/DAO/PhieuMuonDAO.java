@@ -33,7 +33,7 @@ public class PhieuMuonDAO {
                 phieuMuon.setTentv(cursor.getString(3));
                 phieuMuon.setTens(cursor.getString(4));
                 phieuMuon.setGiathue(Integer.parseInt(cursor.getString(5)));
-                phieuMuon.setTentt(cursor.getString(6));
+                phieuMuon.setTentt(cursor.getString(cursor.getColumnIndex(COLUMN_TEN_THU_THU)));
                 phieuMuon.setMas(Integer.parseInt(cursor.getString(7)));
                 listpm.add(phieuMuon);
             } while (cursor.moveToNext());
@@ -42,17 +42,25 @@ public class PhieuMuonDAO {
 
     }
 
+    private static final String COLUMN_NGAYTHUE = "ngaythue";
+    private static final String COLUMN_TRANGTHAI = "trangthai";
+    private static final String COLUMN_TEN_TV = "TenTV";
+    private static final String COLUMN_TEN_SACH = "TenS";
+    private static final String COLUMN_GIA_THUE_SACH = "GiathueS";
+    private static final String COLUMN_TEN_THU_THU = "TenTT";
+    private static final String COLUMN_MA_SACH = "MaS";
+
 
     public long Thempm(PhieuMuon phieuMuon) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ngaythue", phieuMuon.getNgaythue());
-        contentValues.put("trangthai", phieuMuon.getTrangthai());
-        contentValues.put("TenTV", phieuMuon.getTentv());
-        contentValues.put("TenS", phieuMuon.getTens());
-        contentValues.put("GiathueS", phieuMuon.getGiathue());
-        contentValues.put("TenTT",phieuMuon.getTentt());
-        contentValues.put("MaS",phieuMuon.getMas());
+        contentValues.put(COLUMN_NGAYTHUE, phieuMuon.getNgaythue());
+        contentValues.put(COLUMN_TRANGTHAI, phieuMuon.getTrangthai());
+        contentValues.put(COLUMN_TEN_TV, phieuMuon.getTentv());
+        contentValues.put(COLUMN_TEN_SACH, phieuMuon.getTens());
+        contentValues.put(COLUMN_GIA_THUE_SACH, phieuMuon.getGiathue());
+        contentValues.put(COLUMN_TEN_THU_THU,phieuMuon.getTentt());
+        contentValues.put(COLUMN_MA_SACH,phieuMuon.getMas());
         return sqLiteDatabase.insert("phieumuon", null, contentValues);
 
     }
