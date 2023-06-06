@@ -60,6 +60,7 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
     ThuThuDAO thuThuDAO;
 
 
+
     public Quan_Ly_Phieu_Muon_Fragment() {
         // Required empty public constructor
     }
@@ -76,14 +77,21 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_quan__ly__phieu__muon_, container, false);
         recyclerView = view.findViewById(R.id.qlpm_recycview);
+        boolean checktvpm = getArguments().getBoolean("tvpm");
         realoandata();
         FloatingActionButton addphieumuon = view.findViewById(R.id.qlpm_btnfloatingthemphieumuon);
-        addphieumuon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                   ThemPhieuMuon();
-            }
-        });
+        if(checktvpm == false){
+            addphieumuon.setVisibility(View.INVISIBLE);
+        }
+        else {
+            addphieumuon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ThemPhieuMuon();
+                }
+            });
+        }
+
         return view;
     }
 
@@ -117,9 +125,10 @@ public class Quan_Ly_Phieu_Muon_Fragment extends Fragment {
         return listspinnertensach;
     }
     public void realoandata(){
+        boolean checktvpm = getArguments().getBoolean("tvpm");
         phieuMuonDAO = new PhieuMuonDAO(getContext());
         listpm = phieuMuonDAO.GetDSPM();
-        adapterPhieuMuon = new AdapterPhieuMuon(listpm,phieuMuonDAO,getContext(),Spinnertentv(),Spinnertensach());
+        adapterPhieuMuon = new AdapterPhieuMuon(listpm,phieuMuonDAO,getContext(),Spinnertentv(),Spinnertensach(),checktvpm);
         recyclerView.setAdapter(adapterPhieuMuon);
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context=".Fragment.Quan_Ly_Sach.Quan_Ly_Sach_Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -15,11 +15,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/qls_btnfloatingsach"
+        android:layout_below="@+id/qls_recycview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
+       android:layout_alignParentRight="true"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/baseline_post_add_24"
         app:backgroundTint="@android:color/holo_green_light" />
 
-</LinearLayout>
+</RelativeLayout>

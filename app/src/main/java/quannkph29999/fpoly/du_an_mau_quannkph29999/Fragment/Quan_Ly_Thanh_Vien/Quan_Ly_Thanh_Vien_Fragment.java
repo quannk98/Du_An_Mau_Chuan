@@ -65,19 +65,27 @@ public class Quan_Ly_Thanh_Vien_Fragment extends Fragment {
         recyclerViewtv = view.findViewById(R.id.qltv_recycquanly);
         FloatingActionButton themtv = view.findViewById(R.id.qltv_btnfloatingtv);
         realoandata();
-        themtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                  Themtv();
-            }
-        });
+        boolean checktv = getArguments().getBoolean("tvtv");
+        if(checktv == false){
+            themtv.setVisibility(View.INVISIBLE);
+        }
+        else {
+            themtv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Themtv();
+                }
+            });
+        }
+
 
 
     }
     public void realoandata(){
+        boolean checktv = getArguments().getBoolean("tvtv");
         thanhVienDAO = new ThanhVienDAO(getContext());
         listtv = thanhVienDAO.GetDSTV();
-        adapterThanhVien = new AdapterThanhVien(listtv,thanhVienDAO,getContext());
+        adapterThanhVien = new AdapterThanhVien(listtv,thanhVienDAO,getContext(),checktv);
         recyclerViewtv.setAdapter(adapterThanhVien);
     }
     public void Themtv(){

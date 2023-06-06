@@ -31,11 +31,13 @@ public class AdapterLoaiSach extends RecyclerView.Adapter<AdapterLoaiSach.ViewHo
     ArrayList<LoaiSach> listls;
     Context context;
     LoaiSachDAO loaiSachDAO;
+    boolean checktvls;
 
-    public AdapterLoaiSach(ArrayList<LoaiSach> listls, Context context, LoaiSachDAO loaiSachDAO) {
+    public AdapterLoaiSach(ArrayList<LoaiSach> listls, Context context, LoaiSachDAO loaiSachDAO,boolean checktvls) {
         this.listls = listls;
         this.context = context;
         this.loaiSachDAO = loaiSachDAO;
+        this.checktvls = checktvls;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -62,8 +64,17 @@ public class AdapterLoaiSach extends RecyclerView.Adapter<AdapterLoaiSach.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.maloaisach.setText(String.valueOf(listls.get(position).getMals()));
-        holder.tenloaisach.setText(listls.get(position).getTenls());
+        if(checktvls == false){
+            holder.sualoaisach.setVisibility(View.INVISIBLE);
+            holder.xoaloaisach.setVisibility(View.INVISIBLE);
+            holder.maloaisach.setText(String.valueOf(listls.get(position).getMals()));
+            holder.tenloaisach.setText(listls.get(position).getTenls());
+        }
+        else {
+            holder.maloaisach.setText(String.valueOf(listls.get(position).getMals()));
+            holder.tenloaisach.setText(listls.get(position).getTenls());
+        }
+
         holder.llloaisach.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

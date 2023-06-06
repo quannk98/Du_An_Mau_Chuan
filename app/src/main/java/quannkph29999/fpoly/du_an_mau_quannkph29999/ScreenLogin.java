@@ -79,31 +79,39 @@ public class ScreenLogin extends AppCompatActivity {
                     matkhau.requestFocus();
                     matkhau.setError("Không bỏ trống mật khẩu");
                 } else if (thuThuDAO.checkLogintt(user, pass) == true) {
-                    rememberUser(user,pass,luutaikhoan.isChecked());
+                    rememberUser(user, pass, luutaikhoan.isChecked());
                     Intent intenttt = new Intent(ScreenLogin.this, MainActivity.class);
+                    intenttt.putExtra("thuthu", true);
 
-                    Bundle checkdmk =  new Bundle();
+                    Bundle checkdmk = new Bundle();
                     checkdmk.putBoolean("dmktt", true);
-
-                    intenttt.putExtra("thuthu",true);
                     intenttt.putExtras(checkdmk);
 
+                    Bundle checktvpm = new Bundle();
+                    checktvpm.putBoolean("tvpm", true);
+                    intenttt.putExtras(checktvpm);
+
+                    Bundle checktvs = new Bundle();
+                    checktvs.putBoolean("tvs", true);
+                    intenttt.putExtras(checktvs);
+
+                    Bundle checkls = new Bundle();
+                    checkls.putBoolean("tvls", true);
+                    intenttt.putExtras(checkls);
+
+                    Bundle checktv = new Bundle();
+                    checktv.putBoolean("tvtv", true);
+                    intenttt.putExtras(checktv);
 
                     startActivity(intenttt);
-
-
-//                    Doi_Mat_Khau_Fragment fragmentdmk = new Doi_Mat_Khau_Fragment();
-//                    fragmentdmk.setArguments(checkdmk);
                     Toast.makeText(ScreenLogin.this, "Đăng Nhập Bằng Tài Khoản Thủ Thư Thành Công", Toast.LENGTH_SHORT).show();
-                }
-                else if(thanhVienDAO.CheckLogintv(user,pass) == true){
-                    rememberUser(user,pass,luutaikhoan.isChecked());
+                } else if (thanhVienDAO.CheckLogintv(user, pass) == true) {
+                    rememberUser(user, pass, luutaikhoan.isChecked());
                     Intent intenttv = new Intent(ScreenLogin.this, MainActivity.class);
-                    intenttv.putExtra("thanhvien",true);
+                    intenttv.putExtra("thanhvien", true);
                     startActivity(intenttv);
                     Toast.makeText(ScreenLogin.this, "Đăng Nhập Bằng Tài Khoản Thành Viên Thành Công", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(ScreenLogin.this, "Tên Hoặc Mật Khẩu Không Đúng", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -43,9 +43,10 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
     public Quan_Ly_Sach_Fragment() {
 
     }
-    public static Quan_Ly_Sach_Fragment newInstance(){
-           Quan_Ly_Sach_Fragment fragment = new Quan_Ly_Sach_Fragment();
-           return fragment;
+
+    public static Quan_Ly_Sach_Fragment newInstance() {
+        Quan_Ly_Sach_Fragment fragment = new Quan_Ly_Sach_Fragment();
+        return fragment;
     }
 
 
@@ -63,12 +64,18 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
         FloatingActionButton floatingthemsach = view.findViewById(R.id.qls_btnfloatingsach);
         sachDAO = new SachDAO(getContext());
         realoaddatasach();
-        floatingthemsach.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ThemSach();
-            }
-        });
+        boolean checktvs = getArguments().getBoolean("tvs");
+        if (checktvs == false) {
+            floatingthemsach.setVisibility(View.INVISIBLE);
+        } else {
+            floatingthemsach.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ThemSach();
+                }
+            });
+        }
+
         return view;
     }
 
@@ -85,9 +92,9 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
     }
 
     public void realoaddatasach() {
-
+        boolean checktvs = getArguments().getBoolean("tvs");
         lists = sachDAO.GetDSS();
-        adapterSach = new AdapterSach(lists, getContext(), sachDAO, GetdataSpinnerloaisach());
+        adapterSach = new AdapterSach(lists, getContext(), sachDAO, GetdataSpinnerloaisach(),checktvs);
         recyclerViews.setAdapter(adapterSach);
     }
 
@@ -111,10 +118,9 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
         themloaisach.setAdapter(adapter);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-        if(adapter.isEmpty()){
+        if (adapter.isEmpty()) {
             Toast.makeText(getContext(), "Thêm Loại Sách Để Thêm Tên Sách", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             btnthemsach.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -147,7 +153,7 @@ public class Quan_Ly_Sach_Fragment extends Fragment {
         btnthemthoatsach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 alertDialog.dismiss();
+                alertDialog.dismiss();
             }
         });
 

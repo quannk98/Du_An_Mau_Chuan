@@ -48,15 +48,17 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
     ArrayList<HashMap<String, Object>> listspinnertensach;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
+    boolean checktvpm;
 
     public AdapterPhieuMuon(ArrayList<PhieuMuon> listpm, PhieuMuonDAO phieuMuonDAO, Context context,
                             ArrayList<HashMap<String, Object>> listspinnertv,
-                            ArrayList<HashMap<String, Object>> listspinnertensach) {
+                            ArrayList<HashMap<String, Object>> listspinnertensach,boolean checktvpm) {
         this.listpm = listpm;
         this.phieuMuonDAO = phieuMuonDAO;
         this.context = context;
         this.listspinnertv = listspinnertv;
         this.listspinnertensach = listspinnertensach;
+        this.checktvpm = checktvpm;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -88,14 +90,28 @@ public class AdapterPhieuMuon extends RecyclerView.Adapter<AdapterPhieuMuon.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.mapm.setText(String.valueOf(listpm.get(position).getMapm()));
-        holder.tentv.setText(listpm.get(position).getTentv());
-        holder.tensach.setText(listpm.get(position).getTens());
-        holder.tienthue.setText(String.valueOf(listpm.get(position).getGiathue()));
-        holder.trangthai.setText(listpm.get(position).getTrangthai());
-        holder.ngaythue.setText(listpm.get(position).getNgaythue());
-        initPreferences();
-        holder.tenthuthu.setText(listpm.get(position).getTentt());
+        if(checktvpm == false){
+            holder.suapm.setVisibility(View.INVISIBLE);
+            holder.xoapm.setVisibility(View.INVISIBLE);
+            holder.mapm.setText(String.valueOf(listpm.get(position).getMapm()));
+            holder.tentv.setText(listpm.get(position).getTentv());
+            holder.tensach.setText(listpm.get(position).getTens());
+            holder.tienthue.setText(String.valueOf(listpm.get(position).getGiathue()));
+            holder.trangthai.setText(listpm.get(position).getTrangthai());
+            holder.ngaythue.setText(listpm.get(position).getNgaythue());
+            initPreferences();
+            holder.tenthuthu.setText(listpm.get(position).getTentt());
+        }else {
+            holder.mapm.setText(String.valueOf(listpm.get(position).getMapm()));
+            holder.tentv.setText(listpm.get(position).getTentv());
+            holder.tensach.setText(listpm.get(position).getTens());
+            holder.tienthue.setText(String.valueOf(listpm.get(position).getGiathue()));
+            holder.trangthai.setText(listpm.get(position).getTrangthai());
+            holder.ngaythue.setText(listpm.get(position).getNgaythue());
+            initPreferences();
+            holder.tenthuthu.setText(listpm.get(position).getTentt());
+        }
+
         holder.item_phieumuon.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

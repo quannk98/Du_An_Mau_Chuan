@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        replaceFragment(new Quan_Ly_Phieu_Muon_Fragment());
+//        replaceFragment(new Quan_Ly_Phieu_Muon_Fragment());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerlayout);
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (taikhoandn == true) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_user);
+
         } else if (taikhoandn == false) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_navi);
@@ -67,22 +68,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
             case R.id.manage_note:
                 setTitle("Quản Lý Phiếu Mượn");
-                replaceFragment(new Quan_Ly_Phieu_Muon_Fragment());
+                Quan_Ly_Phieu_Muon_Fragment quanLyPhieuMuonFragment = new Quan_Ly_Phieu_Muon_Fragment();
+                Bundle datapm = getIntent().getExtras();
+                quanLyPhieuMuonFragment.setArguments(datapm);
+                replaceFragment(quanLyPhieuMuonFragment);
                 drawerLayout.close();
                 break;
             case R.id.type_book:
                 setTitle("Quản Lý Loại Sách");
-                replaceFragment(new Quan_Ly_Loai_Sach_Fragment());
+                Quan_Ly_Loai_Sach_Fragment quanLyLoaiSachFragment = new Quan_Ly_Loai_Sach_Fragment();
+                Bundle datals = getIntent().getExtras();
+                quanLyLoaiSachFragment.setArguments(datals);
+                replaceFragment(quanLyLoaiSachFragment);
                 drawerLayout.close();
                 break;
             case R.id.manage_book:
                 setTitle("Quản Lý Sách");
-                replaceFragment(new Quan_Ly_Sach_Fragment());
+                Quan_Ly_Sach_Fragment quanLySachFragment = new Quan_Ly_Sach_Fragment();
+                Bundle datas = getIntent().getExtras();
+                quanLySachFragment.setArguments(datas);
+                replaceFragment(quanLySachFragment);
                 drawerLayout.close();
                 break;
             case R.id.manage_user:
                 setTitle("Quản Lý Thành Viên");
-                replaceFragment(new Quan_Ly_Thanh_Vien_Fragment());
+                Quan_Ly_Thanh_Vien_Fragment quanLyThanhVienFragment = new Quan_Ly_Thanh_Vien_Fragment();
+                Bundle datatv = getIntent().getExtras();
+                quanLyThanhVienFragment.setArguments(datatv);
+                replaceFragment(quanLyThanhVienFragment);
                 drawerLayout.close();
                 break;
             case R.id.bestbook:

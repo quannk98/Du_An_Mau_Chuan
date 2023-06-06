@@ -57,18 +57,26 @@ public class Quan_Ly_Loai_Sach_Fragment extends Fragment {
         recyclerViewls = view.findViewById(R.id.qlls_recycciew);
         FloatingActionButton floatingthemls = view.findViewById(R.id.qls_btnfloatingthemloaisach);
         realoandata();
-        floatingthemls.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Themls();
-            }
-        });
+        boolean checktvls = getArguments().getBoolean("tvls");
+        if(checktvls == false){
+            floatingthemls.setVisibility(View.INVISIBLE);
+        }
+        else {
+            floatingthemls.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Themls();
+                }
+            });
+        }
+
     }
 
     public void realoandata() {
+        boolean checktvls = getArguments().getBoolean("tvls");
         loaiSachDAO = new LoaiSachDAO(getContext());
         listloaisach = loaiSachDAO.GetDSLS();
-        adapterLoaiSach = new AdapterLoaiSach(listloaisach, getContext(), loaiSachDAO);
+        adapterLoaiSach = new AdapterLoaiSach(listloaisach, getContext(), loaiSachDAO,checktvls);
         recyclerViewls.setAdapter(adapterLoaiSach);
     }
 

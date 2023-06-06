@@ -29,11 +29,13 @@ public class AdapterThanhVien extends RecyclerView.Adapter<AdapterThanhVien.View
     ArrayList<ThanhVien> listtv;
     ThanhVienDAO thanhVienDAO;
     Context context;
+    boolean checktv;
 
-    public AdapterThanhVien(ArrayList<ThanhVien> listtv, ThanhVienDAO thanhVienDAO, Context context) {
+    public AdapterThanhVien(ArrayList<ThanhVien> listtv, ThanhVienDAO thanhVienDAO, Context context,boolean checktv) {
         this.listtv = listtv;
         this.thanhVienDAO = thanhVienDAO;
         this.context = context;
+        this.checktv = checktv;
     }
 
 
@@ -62,9 +64,19 @@ public class AdapterThanhVien extends RecyclerView.Adapter<AdapterThanhVien.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.matv.setText(String.valueOf(listtv.get(position).getMatv()));
-        holder.tentv.setText(listtv.get(position).getTentv());
-        holder.cccd.setText(listtv.get(position).getCccd());
+        if(checktv == false){
+            holder.suatv.setVisibility(View.INVISIBLE);
+            holder.xoatv.setVisibility(View.INVISIBLE);
+            holder.matv.setText(String.valueOf(listtv.get(position).getMatv()));
+            holder.tentv.setText(listtv.get(position).getTentv());
+            holder.cccd.setText(listtv.get(position).getCccd());
+        }
+        else {
+            holder.matv.setText(String.valueOf(listtv.get(position).getMatv()));
+            holder.tentv.setText(listtv.get(position).getTentv());
+            holder.cccd.setText(listtv.get(position).getCccd());
+        }
+
         holder.lltv.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

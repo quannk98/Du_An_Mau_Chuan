@@ -169,18 +169,18 @@
 
     <ImageButton
         android:id="@+id/itemphieumuon_sua"
-        android:layout_toEndOf="@+id/t3"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_width="40dp"
         android:layout_height="80dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toStartOf="@+id/itemphieumuon_xoa"
         android:src="@drawable/baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/itemphieumuon_xoa"
-        android:layout_toEndOf="@+id/itemphieumuon_sua"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentRight="true"
         android:layout_width="40dp"
         android:layout_height="80dp"
         android:src="@drawable/baseline_delete_forever_24" />

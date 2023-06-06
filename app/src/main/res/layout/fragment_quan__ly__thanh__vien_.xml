@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
+    android:background="@android:color/white"
     tools:context=".Fragment.Quan_Ly_Thanh_Vien.Quan_Ly_Thanh_Vien_Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qltv_recycquanly"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginTop="10dp"
-        android:paddingTop="20dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_margin="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/qltv_btnfloatingtv"
+        android:layout_below="@+id/qltv_recycquanly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/baseline_post_add_24"
         app:backgroundTint="@android:color/holo_green_light" />
 
 
-</LinearLayout>
+</RelativeLayout>

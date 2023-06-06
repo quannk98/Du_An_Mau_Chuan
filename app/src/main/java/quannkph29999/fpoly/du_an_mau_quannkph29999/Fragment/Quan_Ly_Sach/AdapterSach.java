@@ -33,12 +33,15 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
     Context context;
     SachDAO sachDAO;
     ArrayList<HashMap<String, Object>> listspinnerls;
+    boolean checktvs;
 
-    public AdapterSach(ArrayList<Sach> listsach, Context context, SachDAO sachDAO, ArrayList<HashMap<String, Object>> listspinnerls) {
+    public AdapterSach(ArrayList<Sach> listsach, Context context, SachDAO sachDAO,
+                       ArrayList<HashMap<String, Object>> listspinnerls,boolean checktvs) {
         this.listsach = listsach;
         this.context = context;
         this.sachDAO = sachDAO;
         this.listspinnerls = listspinnerls;
+        this.checktvs = checktvs;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -69,10 +72,21 @@ public class AdapterSach extends RecyclerView.Adapter<AdapterSach.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.masach.setText(String.valueOf(listsach.get(position).getMasach()));
-        holder.tensach.setText(listsach.get(position).getTensach());
-        holder.giathue.setText(String.valueOf(listsach.get(position).getGiasach()));
-        holder.loaisach.setText(listsach.get(position).getTenls());
+        if(checktvs == false){
+            holder.suasach.setVisibility(View.INVISIBLE);
+            holder.xoasach.setVisibility(View.INVISIBLE);
+            holder.masach.setText(String.valueOf(listsach.get(position).getMasach()));
+            holder.tensach.setText(listsach.get(position).getTensach());
+            holder.giathue.setText(String.valueOf(listsach.get(position).getGiasach()));
+            holder.loaisach.setText(listsach.get(position).getTenls());
+        }
+        else {
+            holder.masach.setText(String.valueOf(listsach.get(position).getMasach()));
+            holder.tensach.setText(listsach.get(position).getTensach());
+            holder.giathue.setText(String.valueOf(listsach.get(position).getGiasach()));
+            holder.loaisach.setText(listsach.get(position).getTenls());
+        }
+
         holder.llsach.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

@@ -114,16 +114,17 @@
         android:id="@+id/itemsach_suas"
         android:layout_width="40dp"
         android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/t2"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/itemsach_xoas"
         android:src="@drawable/baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/itemsach_xoas"
         android:layout_width="40dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/itemsach_suas"
+        android:layout_marginEnd="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
         android:src="@drawable/baseline_delete_forever_24" />
 </RelativeLayout>
